@@ -2,9 +2,9 @@
 FUNWAVE_DIR = .
 WORK_DIR    = funwave-work
 COMPILER    = gnu
-PARALLEL    = false
-EXEC        = funwave
-PRECISION   = single
+PARALLEL    = true
+EXEC        = FW
+PRECISION   = double
 
 #-----------DEFINE FLAGS-----------------------------
 #         uncomment to choose the model
@@ -19,7 +19,7 @@ PRECISION   = single
 # FLAG_9  = -DTMP
 # FLAG_10 = -DTRACKING
 #  FLAG_11 = -DDEEP_DRAFT_VESSEL
-  FLAG_12 = -DFOAM
+#  FLAG_12 = -DFOAM
 #----------------uncommon options---------------------
 DEF_FC      = mpif90
 DEF_FC_FLAG = 
