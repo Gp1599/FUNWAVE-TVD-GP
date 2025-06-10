@@ -8,8 +8,9 @@ import os
 
 # write your OWN PC folder path for fdir
 # Remember that we use for Mac & Linux machines '/', while on windows '\', the r denotes raw string
-fdir = r'/Users/Gaby/Desktop/Postprocessing-Workshop/simple_cases_output/beach_2D/beach_2D/'
-#fdir = "../../../../simulationRuns/beach2D/output/"
+#fdir = r'/Users/Gaby/Desktop/Postprocessing-Workshop/simple_cases_output/beach_2D/beach_2D/'
+fdir = "../../../../simulationRuns/beach2D/output/"
+
 # upload eta file
 eta = np.loadtxt(os.path.join(fdir,'eta_00001'))
 # define plot location
@@ -94,8 +95,9 @@ class Beach2DPlot:
             cbar.set_label('Hsig (m)', rotation=90)
 
 i = 0
+testFileQuantity = len(nfile)
 for p in [Beach2DPlot(num) for num in nfile]:
-    p.putIn(fig, len(nfile), i)
+    p.putIn(fig, testFileQuantity, i)
     i += 1
 
 # save figure        

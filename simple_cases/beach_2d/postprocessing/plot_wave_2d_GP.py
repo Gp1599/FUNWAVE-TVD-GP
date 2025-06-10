@@ -3,11 +3,12 @@
 # import necessary modules
 import numpy as np               
 import matplotlib.pyplot as plt
+
 import os
 # write your OWN PC folder path for fdir
 # Remember that we use for Mac & Linux machines '/', while on windows '\'
-fdir = r'C:\Users\User\Documents\USACE_WORK\Funwave_Seminar\results\beach_2d\work\output'
-
+#fdir = r'C:\Users\User\Documents\USACE_WORK\Funwave_Seminar\results\beach_2d\work\output'
+fdir = "../../../../simulationRuns/beach2D/output/"
 # upload eta file
 eta=np.loadtxt(os.path.join(fdir,'eta_00001'))
 
@@ -34,7 +35,6 @@ min = ['20','100']  # time  you want to plot
 wid=10    # width
 length=5 # length
 
-
 # plot figure
 fig = plt.figure(figsize=(wid,length),dpi=200)
 
@@ -43,14 +43,10 @@ fig = plt.figure(figsize=(wid,length),dpi=200)
 class Beach2DPlotII:
     def __init__(self, fileNumber):
         self.fileNumber = fileNumber
-        fnum= '%.5d' % fileNumber
-        self.eta = np.loadtxt(os.path.join(fdir, "eta_" + fnum))
-        self.mask = np.loadtxt(os.path.join(fdir, "mask_" + fnum))
 
-        self.eta_masked = np.ma.masked_where(self.mask == 0, eta)
-
-    def putIn(self, fig):
+    def putIn(self, fig, testFileQuantity, i):
         global nfile
+        global min 
         global x
         global y
         global x_sponge
@@ -58,13 +54,19 @@ class Beach2DPlotII:
         global x_wavemaker
         global y_wavemaker
 
-        ax = fig.add_subplot(1, len(nfile), self.fileNumber + 1)
-        fig.subplots_adjust(hspace = 1, wspace = .25)
-        plt.pcolor(x, y, self.eta_masked, cmap = 'coolwarm')
+        fnum = '%.5d' % self.fileNumber
+        eta = np.loadtxt(os.path.join(fdir, "eta_" + fnum))
+        mask = np.loadtxt(os.path.join(fdir, "mask_" + fnum))
 
-        title = "Time = " + min[self.fileNumber] + " sec"
+        eta_masked = np.ma.masked_where(mask == 0, eta)
+
+        ax = fig.add_subplot(1, testFileQuantity, i + 1)
+        fig.subplots_adjust(hspace = 1, wspace = .25)
+        plt.pcolor(x, y, eta_masked, cmap = 'coolwarm')
+
+        title = "Time = " + min[i] + " sec"
         plt.title(title)
-        plt.hold(True)
+        #plt.hold(True)
 
         plt.plot(x_sponge, y_sponge, "g--", linewidth = 3)
         plt.text(50, 500, "Sponge", color = 'g', rotation = 90)
@@ -72,7 +74,7 @@ class Beach2DPlotII:
         plt.plot(x_wavemaker, y_wavemaker, 'k-', linewidth = 3)
         plt.text(180, 700, 'Wavemaker', color = 'k', rotation = 90)
 
-        if self.fileNumber == 0:
+        if i == 0:
             plt.ylabel('Y (m)')
             plt.xlabel('X (m)')
         else:
@@ -109,8 +111,10 @@ class Beach2DPlotII:
 #        plt.xlabel('X (m)')
 #        cbar=plt.colorbar()
 #        cbar.set_label(r'$\eta$'+' (m)', rotation=90)
-        
+i = 0
+testFileQuantity = len(nfile)   
 for p in [Beach2DPlotII(num) for num in nfile]:
-    p.putIn(fig)
+    p.putIn(fig, testFileQuantity, i)
+    i += 1
 # save figure  
 fig.savefig('eta_2d_wave.png', dpi=fig.dpi)

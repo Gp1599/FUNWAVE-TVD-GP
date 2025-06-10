@@ -3,21 +3,21 @@ FUNWAVE_DIR = .
 WORK_DIR    = funwave-work
 COMPILER    = gnu
 PARALLEL    = true
-EXEC        = FW
+EXEC        = funwave_surface_wave_1D
 PRECISION   = double
 
 #-----------DEFINE FLAGS-----------------------------
 #         uncomment to choose the model
 #  FLAG_1  = -DCOUPLING
-# FLAG_2  = -DZALPHA
-# FLAG_3  = -DMANNING
+#  FLAG_2  = -DZALPHA
+#  FLAG_3  = -DMANNING
 #  FLAG_4  = -DVESSEL
-# FLAG_5  = -DMETEO
-# FLAG_6  = -DWIND
+#  FLAG_5  = -DMETEO
+#  FLAG_6  = -DWIND
 #  FLAG_7  = -DSEDIMENT
-# FLAG_8  = -DCHECK_MASS_CONSERVATION
-# FLAG_9  = -DTMP
-# FLAG_10 = -DTRACKING
+#  FLAG_8  = -DCHECK_MASS_CONSERVATION
+#  FLAG_9  = -DTMP
+#  FLAG_10 = -DTRACKING
 #  FLAG_11 = -DDEEP_DRAFT_VESSEL
 #  FLAG_12 = -DFOAM
 #----------------uncommon options---------------------
