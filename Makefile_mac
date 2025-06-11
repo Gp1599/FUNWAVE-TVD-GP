@@ -3,7 +3,7 @@ FUNWAVE_DIR = .
 WORK_DIR    = funwave-work
 COMPILER    = gnu
 PARALLEL    = true
-EXEC        = funwave_surface_wave_1D
+EXEC        = funwave_surface_wave_2D
 PRECISION   = double
 
 #-----------DEFINE FLAGS-----------------------------
@@ -12,6 +12,7 @@ PRECISION   = double
 #  FLAG_2  = -DZALPHA
 #  FLAG_3  = -DMANNING
 #  FLAG_4  = -DVESSEL
+FLAG_4 = -DCARTESIAN
 #  FLAG_5  = -DMETEO
 #  FLAG_6  = -DWIND
 #  FLAG_7  = -DSEDIMENT
