@@ -9,7 +9,8 @@ import os
 # write your OWN PC folder path for fdir
 # Remember that we use for Mac & Linux machines '/', while on windows '\', the r denotes raw string
 #fdir = r'/Users/Gaby/Desktop/Postprocessing-Workshop/simple_cases_output/beach_2D/beach_2D/'
-fdir = "../../../../simulationRuns/beach2D/output/"
+#fdir = "../../../../simulationRuns/beach2D/output/"
+fdir = "../../../../simulationRuns/beach2D_radiation/output"
 
 # upload eta file
 eta = np.loadtxt(os.path.join(fdir,'eta_00001'))
@@ -19,8 +20,10 @@ dx = 2.0
 dy = 2.0
 
 # define sponge and wavemaker location
-x = np.asarray([float(xa)*dx for xa in range(m)])
-y = np.asarray([float(ya)*dy for ya in range(n)])
+x = np.asarray([float(xa)*dx for xa in range(m)]) #numpy shape
+print(x.shape)
+y = np.asarray([float(ya)*dy for ya in range(n)]) #numpy shape
+print(y.shape)
 
 x_sponge = [0,100,100,0,0]
 y_sponge = [0,0,y[len(y)-1],y[len(y)-1],0]
