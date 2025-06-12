@@ -9,6 +9,7 @@ import os
 # Remember that we use for Mac & Linux machines '/', while on windows '\'
 #fdir = r'C:\Users\User\Documents\USACE_WORK\Funwave_Seminar\results\beach_2d\work\output'
 fdir = "../../../../simulationRuns/beach2D/output/"
+#fdir = "../../../../simulationRuns/beach2D_radiation/output/"
 # upload eta file
 eta=np.loadtxt(os.path.join(fdir,'eta_00001'))
 
@@ -29,7 +30,7 @@ y_wavemaker = [0, 0, y[len(y)-1],y[len(y)-1],0]
 
 
 nfile = [10, 50]    # range of eta files you want to plot
-min = ['20','100']  # time  you want to plot
+min = ['20','100']  # time you want to plot
 
 # figure size option 
 wid=10    # width

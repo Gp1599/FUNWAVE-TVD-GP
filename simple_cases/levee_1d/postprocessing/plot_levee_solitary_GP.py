@@ -4,7 +4,8 @@ import numpy as np
 import os
 
 # Setup Directory Paths
-simulationDir = '..'+'/'+'work_solitary'
+#simulationDir = '..'+'/'+'work_solitary'
+simulationDir = "../../../../simulationRuns/levee_1d"
 outputDir = simulationDir+'/'+'output'
 plotsDir = simulationDir+'/'+'plots'
 
@@ -13,7 +14,7 @@ if not os.path.exists(plotsDir):
     os.makedirs(plotsDir)
 
 # Read in the depth bathymetry file and setup dimensions
-depth = (np.loadtxt('../work_solitary/depth_levee.txt'))*-1  # Change Depth to (-) under MWL and (+) over MWL.
+depth = (np.loadtxt(simulationDir + "/depth_levee.txt"))*-1  # Change Depth to (-) under MWL and (+) over MWL.
 [Nglob,Mglob]  = depth.shape   # recall that Fotran/FUNWAVE and C/C++/Matlab/Python are reversed! 
 
 # Setting up field dimensions and time loops
@@ -80,7 +81,7 @@ class ETAPlot:
 
         # Finally, print the snapshot containing the final results
         snapshotFileName = plotsDir + "/surf_{0:05d}.png".format(self.fileNumber)
-        plt.savefig(snapshotFileName, ext = "png", bbox_inches = "tight")
+        plt.savefig(snapshotFileName, bbox_inches = "tight")
 
         plt.close()
         # end of reference

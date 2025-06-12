@@ -1,0 +1,53 @@
+10, 11, or 12.      initializes the directory path to beach2D radiation output files
+14.                 loads eta
+17.                 reading n and m from the eta's shape (n -> Nglob from input file & m -> Mglob from input file)
+18.                 initializes dx
+19.                 initializes dy
+
+21.                 initializes x as a 1D array from m
+22.                 initializes y as a 1D array from n
+
+25.                 initializes the x coordinates of the sponge area (related to the Sponge Layer input variables)
+26.                 initializes the y coordinates of the sponge area (related to the Sponge Layer input variables)
+
+28.                 initializes the x coordinates of the wavemaker area (related to the Wavemaker layer)
+29.                 initialized the y coordinates of the wavemaker area
+
+32.                 indicates the list of files via, file number references, to test
+33.                 indicates the parallel array for files to contain their respective minimum times
+
+36.                 initializes the plot's width hyperparameter
+37.                 initializes the plot's length hyperparameter
+40.                 initializes the main figure using these hyperparameters along with the dpi value
+
+for every subplot
+46.                 initializes the subplot's file number
+
+58.                 initializes fnum to be used to help read eta's filename
+59.                 extracts the eta data from the current eta file
+60.                 extracts mask data from the current eta file
+62.                 creates the masked copy of the eta matrix
+
+64.                 creats and adding the subplot 
+65.                 gives space between subplots with hspace = 1 and wspace = 0.25
+66.                 gives the current subplot a coolwarm background based on the masked copy of the eta matrix
+68.                 initializes the current subplot's title with "Time = <time> sec" where <time> is its corresponding minimum time
+69.                 applies the title to the current subplot
+70.                 holds the current subplot (depreciated and commented out)
+
+72.                 draws the sponge's area with the color green
+73.                 gives the sponge's area the name "Sponge" to be colored green and rotated 90 degrees
+
+75.                 draws the wavemaker's area with the color "k"
+76.                 gives the wavemaker's area the name "Wavemaker" to be colored "k" and rotated 90 degrees
+
+79.                 if the current subplot is the first, it initializes the y-axis label to "Y (m)"
+80.                 if the current subplot is the first, it initializes the x-axis label to "X (m)"
+82.                 if the current subplot is not the first, it initializes the x-axis label to "X (m)"
+83.                 if the current subplot is not the first, it initializes the subplot's colorbar
+84.                 if the current subplot is not the first, it changes the subplot's colorbar label to "'$\eta$' + ' (m)' and rotates the colorbar 90 degrees
+end for
+
+115-119.            executes the algorithm to create all subplots
+
+121.                publishes the main figure

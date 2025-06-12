@@ -9,8 +9,8 @@ import os
 # write your OWN PC folder path for fdir
 # Remember that we use for Mac & Linux machines '/', while on windows '\', the r denotes raw string
 #fdir = r'/Users/Gaby/Desktop/Postprocessing-Workshop/simple_cases_output/beach_2D/beach_2D/'
-#fdir = "../../../../simulationRuns/beach2D/output/"
-fdir = "../../../../simulationRuns/beach2D_radiation/output"
+fdir = "../../../../simulationRuns/beach2D/output/"
+#fdir = "../../../../simulationRuns/beach2D_radiation/output"
 
 # upload eta file
 eta = np.loadtxt(os.path.join(fdir,'eta_00001'))
@@ -21,9 +21,7 @@ dy = 2.0
 
 # define sponge and wavemaker location
 x = np.asarray([float(xa)*dx for xa in range(m)]) #numpy shape
-print(x.shape)
 y = np.asarray([float(ya)*dy for ya in range(n)]) #numpy shape
-print(y.shape)
 
 x_sponge = [0,100,100,0,0]
 y_sponge = [0,0,y[len(y)-1],y[len(y)-1],0]
@@ -41,7 +39,7 @@ length=5 # length
 # plot figure
 fig = plt.figure(figsize = (wid,length),dpi=200)
 
-#Gabriel's class blueprint to represent a plot to be used for beach 2D
+# Gabriel's class blueprint to represent a plot to be used for beach 2D
 class Beach2DPlot:
 
     def __init__(self, fileNumber):
@@ -78,7 +76,8 @@ class Beach2DPlot:
         sk=8
 
         # plot current vectors
-        Q = plt.quiver(x[0:len(x)-1:sk],y[0:len(y)-1:sk],self.u[0:len(self.u)-1:sk,0:len(self.u)-1:sk],self.v[0:len(self.v)-1:sk,0:len(self.v)-1:sk],color='w')
+        Q = plt.quiver(x[::sk],y[::sk],self.u[::sk,::sk],self.v[::sk,::sk],color='w')
+        #Q = plt.quiver(x[0:len(x)-1:sk],y[0:len(y)-1:sk],u[0:len(u)-1:sk,0:len(u)-1:sk],v[0:len(v)-1:sk,0:len(v)-1:sk],color='w')
         qk = plt.quiverkey(Q, 0.91, 0.91, 0.1, r'$0.1 \frac{m}{s}$', labelpos='E',
                             coordinates='figure',color='k')
 
