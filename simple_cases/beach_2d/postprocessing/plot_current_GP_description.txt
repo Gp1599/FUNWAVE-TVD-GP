@@ -1,11 +1,11 @@
 11, 12, or 13.      Initializes the directory where the output files for this particular simple case are
 
 18.                 creates m and n from the shape of the eta file (n -> Nglob from the input file & m -> Mglob from the input file)
-19.                 initializes dx 
-20.                 initializes dy
+19.                 initializes dx for plot location and probably discretization
+20.                 initializes dy for plot location and probably discretization
 
-23.                 creates x as a 1D array from m 
-24.                 creates y as a 1D array from n
+23.                 creates x as a 1D array from m via plot location and discretization
+24.                 creates y as a 1D array from n via plot location and discretization
 
 26.                 creates spongeX (related to the Sponge Layer input variables)
 27.                 creates spongeY (related to the Sponge Layer input variables)
@@ -21,33 +21,41 @@
 40.                 initializes the figure with these hyperparameters
 
 for every subplot
-49.                 initialize u as a matrix (probably related to U, Umax, & Umean)
-50.                 initialize v as a matrix (probability related to V, VORmax, and Vmax)
-51.                 initialize ht as a matrix (related to )
-52.                 initialize mask as a matrix
-
+49.                 initialize u as a matrix (probably related to U, Umax, and Umean from the input file)
+50.                 initialize v as a matrix (probability related to V, VORmax, and Vmax from the input file)
+51.                 initialize ht as a matrix (related to HMax and Hmin from the input file)
+52.                 initialize mask as a matrix (related to MASK and MASK9 from the input file)
+    masking
 55.                 duplicate and mask u, v, and ht by hiding zeros in them via the mask matrix
 56.                 duplicate and mask v by hiding zeros in them via the mask matrix
 57.                 duplicate and mask ht by hiding zeros in them via the mask matrix
-68.                 creates and adding a new suplot
+    subplot initialization
+68.                 creates and adds a new suplot
 69.                 separates subplots with hspace = 1.00 wspace = 0.25
 70.                 gives the suplot the coolwarm background based on the ht_masked matrix
+
+    Adds the title to the subplot
 72.                 initializes the subplot title which is "Time = <time> sec" where time is the subplot's corresponding minimum time in seconds
 73.                 applies the title to the subplot
+
 74.                 holds the subplot (depreciated and commented out)
 76.                 sets the local variable stride to 8 which I'll later change into a global variable***
+    quivers
 79.                 sets up the quivers
-81-82.              plots the quiver key which indicates the speed based on a quiver's magnetude     
+81-82.              plots the quiver key which indicates the speed based on a quiver's magnitude
+    sponge area
 85.                 plots the rectangular area of the sponge
 86.                 gives the sponge's area the name "Sponge" and give it the color green
-88.                 plots the rectangular area of the wavemaker
-89.                 gives the wavemaker's area the name "Wakemaker" and give it the color "k"
-92.                 initializes the Y axis in meters if the current sublot is the first
-93.                 initializes the X axis in meters if the current sublot is the first
-95.                 initializes the X axis in meters if the current sublot is not the first
-96.                 initializes the sublot's colorbar if the current sublot is not the first
-97.                 changes the sublot's colorbar's label to "Hsig (m)" and rotates it 90 degrees
-end for
+    wavemaker area
+88.                 plots the rectangular area of the Wavemaker
+89.                 gives the Wavemaker's area the name "Wakemaker" and give it the color "k"
+    axes
+92.                 initializes the Y axis in meters if the current subplot is the first
+93.                 initializes the X axis in meters if the current subplot is the first
+95.                 initializes the X axis in meters if the current subplot is not the first
+96.                 initializes the sublot's colorbar if the current subplot is not the first
+97.                 changes the sublot's colorbar's label to "Hsig (m)" and rotates it 90 degrees if the current subplot is not the first
+end of for
 
 99-103.             executes the algorithm to create all subplots
 

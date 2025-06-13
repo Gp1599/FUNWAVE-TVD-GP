@@ -9,8 +9,8 @@ import os
 # write your OWN PC folder path for fdir
 # Remember that we use for Mac & Linux machines '/', while on windows '\', the r denotes raw string
 #fdir = r'/Users/Gaby/Desktop/Postprocessing-Workshop/simple_cases_output/beach_2D/beach_2D/'
-fdir = "../../../../simulationRuns/beach2D/output/"
-#fdir = "../../../../simulationRuns/beach2D_radiation/output"
+#fdir = "../../../../simulationRuns/beach2D/output/"
+fdir = "../../../../simulationRuns/beach2D_radiation/output"
 
 # upload eta file
 eta = np.loadtxt(os.path.join(fdir,'eta_00001'))
@@ -23,14 +23,14 @@ dy = 2.0
 x = np.asarray([float(xa)*dx for xa in range(m)]) #numpy shape
 y = np.asarray([float(ya)*dy for ya in range(n)]) #numpy shape
 
-x_sponge = [0,100,100,0,0]
-y_sponge = [0,0,y[len(y)-1],y[len(y)-1],0]
+x_sponge =      [0,         100,        100,            0,              0  ]
+y_sponge =      [0,         0,          y[len(y)-1],    y[len(y)-1],    0  ]
 
-x_wavemaker = [150, 160, 160, 150, 150]
-y_wavemaker = [0, 0, y[len(y)-1],y[len(y)-1],0]
+x_wavemaker =   [150,       160,        160,            150,            150]
+y_wavemaker =   [0,         0,          y[len(y)-1],    y[len(y)-1],    0  ]
 
-nfile = [1]     # range of eta files you want to plot
-min = ['200']   # time  you want to plot
+nfile =         [   1       ]       # range of eta files you want to plot
+min =           [   '200'   ]       # time  you want to plot
 
 # figure size option 
 wid=8    # width
@@ -64,7 +64,7 @@ class Beach2DPlot:
         global min
         global wid
         global length
-
+        
         ax = fig.add_subplot(1, testFileQuantity, i + 1)
         fig.subplots_adjust(hspace=1,wspace=.25)
         plt.pcolor(x, y, self.ht_masked, cmap='coolwarm')

@@ -1,0 +1,44 @@
+13.         extracts the home directory
+14.         assembles the path into the one to the output files for the rip_2D case
+22.         extracts the path to the depth file
+23.         creates the depth matrix
+24.         initializes n, which is related to Nglob from the input file, and m, which is related to Mglob from the input file
+27.         initializes dx for plot location and discretization
+28.         initializes dy for plot location and discretization
+31.         initializes the x array for field vectors
+32.         initializes the y array for field vectors
+35.         initializes grid points from the mech grid of x and y arrays
+37.         prompts the user for the starting file number
+38.         prompts the user for the ending file number
+
+for each plot
+47.         increments icount
+48.         creates the multi-digit version of the current file number to be used for reading umean, vmean, eta, and mask files
+51.         extracts the umean matrix
+52.         extracts the vmean matrix
+53.         extracts the eta matrix
+54.         extracts the mask matrix
+57.         removes masked regions from the eta matrix
+58.         removes masked regions from the dep matrix
+59.         removes masked regions from the umean matrix
+60.         removes masked regions from the vmean matrix
+63.         initializes the current subplot
+66.         gives the subplot the jet background
+67.         limits the lengths of both the x-axis and the y-axis
+68.         adds a colorbar for the current subplot
+70.         initializes the tick locator for the colorbar
+71.         updates ticks for the colorbar
+73.         changing the colorbar axis's label to ...
+74.         adding the x-axis label named "x (m)" to the current plot
+75.         adding the y-axis label named "y (m)" to the current plot
+78.         creating another subplot
+80.         initializing the contourf
+81.         initializing the colorbar
+82.         changing the colorbar's axis label to ...
+84.         initializing the everyswitch constant (to later be transformed into global variable)
+85-88.      adding quivers
+89.         labels the x-axis "x (m)"
+90.         limiting the axis lengths
+92.         saving the main plot
+93.         show the main plot
+end of for

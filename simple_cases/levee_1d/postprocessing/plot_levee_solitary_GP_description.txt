@@ -1,0 +1,47 @@
+7-8.        initializes the path of the simple case directory where its corresponding output files are
+9.          initializes the output directory path with the simple case directory path
+10.         initializes the directory path, where the case's corresponding plots are, with the simple case directory path
+
+13.         creates the directory to the levee_1D's postprocessed plots if not created already
+
+17.         creates the depth array from the depth file
+18.         extracts Mglob and Nglob from the depth file
+
+21.         initializes the number of ETA files to test to be used as a hyperparameter
+22.         initializes the Lt constant
+23.         initializes the WaveMaker constant
+24.         initializes the plotInt constant 
+
+to read ETA data
+30.         checks if the number parameter is between 1 and the number of ETA files to test; if not valid, the function skips
+34.         creates the filename based on the num
+35.         lets the user know that the script is reading the current ETA file
+36-38.      extracts from the eta file the free_surface array and returns it.
+end of function
+
+for every ETA Plot
+50.         initializes the plot's corresponding ETA file number
+51.         initializes the plot's ETA data to be used as y coordinates
+52.         initializes the plot's x coordinates
+
+64.         initializes the plot's figure
+65.         initializes the subplot
+66.         visualzes the coordinates
+
+69.         visualizes the x label
+70.         visualizes the y label
+
+73.         visualizes the water
+
+76.         visualizes the bottom fill
+
+79.         visualizes the annotation where the wave starts
+
+80.         visualizes the annotation for elapsed time
+
+83.         initializes the filename for the plot
+84.         publishes the plot
+86.         closing the plot
+end of for
+
+91-93.      executes the algorithm for all ETA files in the hyperparameter
