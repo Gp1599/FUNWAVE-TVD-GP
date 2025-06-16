@@ -23,31 +23,31 @@
 for every subplot
 46.                 initializes the subplot's file number
 
-58.                 initializes fnum to be used to help read eta's filename
-59.                 extracts the eta data from the current eta file
-60.                 extracts mask data from the current eta file
-62.                 creates the masked copy of the eta matrix
+43.                 initializes fnum to be used to help read eta's filename
+44.                 extracts the eta data from the current eta file
+45.                 extracts mask data from the current eta file
 
-67.                 creates and adding the subplot 
-68.                 gives space between subplots with hspace = 1 and wspace = 0.25
-69.                 gives the current subplot a coolwarm background based on the masked copy of the eta matrix
-71.                 initializes the current subplot's title with "Time = <time> sec" where <time> is its corresponding minimum time
-72.                 applies the title to the current subplot
-73.                 holds the current subplot (depreciated and commented out)
+47.                 creates the masked copy of the eta matrix
 
-75.                 draws the sponge's area with the color green
-76.                 gives the sponge's area the name "Sponge" to be colored green and rotated 90 degrees
+49.                 creates and adding the subplot 
+50.                 gives space between subplots with hspace = 1 and wspace = 0.25
+51.                 gives the current subplot a coolwarm background based on the masked copy of the eta matrix
 
-78.                 draws the wavemaker's area with the color "k"
-79.                 gives the wavemaker's area the name "Wavemaker" to be colored "k" and rotated 90 degrees
+53.                 initializes the current subplot's title with "Time = <time> sec" where <time> is its corresponding minimum time
+54.                 applies the title to the current subplot
+55.                 holds the current subplot (depreciated and commented out)
 
-82.                 if the current subplot is the first, it initializes the y-axis label to "Y (m)"
-83.                 if the current subplot is the first, it initializes the x-axis label to "X (m)"
-85.                 if the current subplot is not the first, it initializes the x-axis label to "X (m)"
-86.                 if the current subplot is not the first, it initializes the subplot's colorbar
-87.                 if the current subplot is not the first, it changes the subplot's colorbar label to "'$\eta$' + ' (m)' and rotates the colorbar 90 degrees
+58.                 draws the sponge's area with the color green
+59.                 gives the sponge's area the name "Sponge" to be colored green and rotated 90 degrees
+
+61.                 draws the wavemaker's area with the color "k"
+62.                 gives the wavemaker's area the name "Wavemaker" to be colored "k" and rotated 90 degrees
+
+65.                 if the current subplot is the first, it initializes the y-axis label to "Y (m)"
+66.                 if the current subplot is the first, it initializes the x-axis label to "X (m)"
+68.                 if the current subplot is not the first, it initializes the x-axis label to "X (m)"
+69.                 if the current subplot is not the first, it initializes the subplot's colorbar
+70.                 if the current subplot is not the first, it changes the subplot's colorbar label to "'$\eta$' + ' (m)' and rotates the colorbar 90 degrees
 end for
 
-118-122.            executes the algorithm to create all subplots
-
-125.                publishes the main figure
+74.                 publishes the main figure

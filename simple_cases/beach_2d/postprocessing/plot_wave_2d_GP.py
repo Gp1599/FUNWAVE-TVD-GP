@@ -20,6 +20,8 @@ print("Mglob:", m)
 dx = 2.0
 dy = 2.0
 
+x0_sponge = 100
+
 x = np.asarray([float(xa)*dx for xa in range(m)])
 y = np.asarray([float(ya)*dy for ya in range(n)])
 
@@ -27,11 +29,11 @@ y = np.asarray([float(ya)*dy for ya in range(n)])
 x_sponge =      [0,         100,        100,            0,              0  ]
 y_sponge =      [0,         0,          y[len(y)-1],    y[len(y)-1],    0  ]
 
-x_wavemaker =   [150,       160,        160,            150,            150]
-y_wavemaker =   [0,         0,          y[len(y)-1],    y[len(y)-1],    0  ]
+x_wavemaker =   [155,       155,       ]
+y_wavemaker =   [0,         y[len(y)-1]]
 
-nfile = [10, 50]    # range of eta files you want to plot
-min = ['20','100']  # time you want to plot
+nfile = [10, 25]    # range of eta files you want to plot
+min = ['20','50']  # time you want to plot
 
 # figure size option 
 wid=10    # width
@@ -66,17 +68,20 @@ class Beach2DPlotII:
 
         ax = fig.add_subplot(1, testFileQuantity, i + 1)
         fig.subplots_adjust(hspace = 1, wspace = .25)
-        plt.pcolor(x, y, eta_masked, cmap = 'coolwarm')
+        plt.pcolormesh(x, y, eta_masked, cmap = 'coolwarm') #plt.pcolor(x, y, eta_masked, cmap = 'coolwarm')
 
         title = "Time = " + min[i] + " sec"
         plt.title(title)
         #plt.hold(True)
-        # plot sponge and wavemaker
-        plt.plot(x_sponge, y_sponge, "g--", linewidth = 3)
-        plt.text(50, 500, "Sponge", color = 'g', rotation = 90)
 
-        plt.plot(x_wavemaker, y_wavemaker, 'k-', linewidth = 3)
-        plt.text(180, 700, 'Wavemaker', color = 'k', rotation = 90)
+        # plot sponge and wavemaker
+        plt.plot(x_sponge, y_sponge, "g--", linewidth = 3, label = "Sponge") 
+        #plt.text(50, 500, "Sponge", color = 'g', rotation = 90)#FIXME: Change this to legend
+
+        plt.plot(x_wavemaker, y_wavemaker, 'k-', linewidth = 3, label = "Wavemaker") #FIXME: Change this to line
+        #plt.text(180, 700, 'Wavemaker', color = 'k', rotation = 90)#FIXME: Change this to legend
+
+        plt.legend()
 
         if i == 0:
             plt.ylabel('Y (m)')

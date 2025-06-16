@@ -11,7 +11,9 @@ from matplotlib.cm import jet
 from matplotlib import ticker
 
 HOME = os.environ['HOME']
-fdir = os.path.join(HOME,'FUNWAVE-TVD','simple_cases','rip_2D','work','output')
+#fdir = os.path.join(HOME,'FUNWAVE-TVD','simple_cases','rip_2D','work','output')
+#fdir = "../../../../simulationRuns/rip_2d/output/"
+fdir = "../../../../simulationRuns/rip_2d_foam/output/"
 
 # -----------------------
 # -- End of user input --
@@ -20,6 +22,7 @@ fdir = os.path.join(HOME,'FUNWAVE-TVD','simple_cases','rip_2D','work','output')
 # Getting depth file and determining domain dimensions
 
 depFile = os.path.join(fdir,'dep.out')
+print(depFile)
 dep = np.loadtxt(depFile)
 [n,m] = dep.shape
 
@@ -73,7 +76,7 @@ def executeSubplot(i):
         # ----------------
         plt.subplot(1,2,2)
 
-        cf = plt.contourf(xx,yy,-dep,10);
+        cf = plt.contourf(xx,yy,-dep,10)
         c_bar = plt.colorbar(cf, orientation='horizontal')
         c_bar.ax.set_xlabel('depth (m)')
 
@@ -86,10 +89,10 @@ def executeSubplot(i):
         plt.axis([0,m*dx/2,0,n*dy])
         plt.savefig('rip_2d_2subplot_num_'+str(i)+'.png', dpi=400)                                                            
         plt.show()   
-icount = 0
+#icount = 0
 #for num=nstart:nend
 for num in range(int(nstart),int(nend)+1):
-        icount += 1
+        #icount += 1
         executeSubplot(num)
         # Padding integer values with zeros
         # to be 5 letters long e.g. 1 -> 00001
