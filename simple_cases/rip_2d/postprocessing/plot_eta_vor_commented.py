@@ -39,12 +39,12 @@ nend = input('enter nend: ')
 
 # previous version (2nd revision) nstart=280
 
-icount = 0
+#icount = 0
 #for num=nstart:nend
 for num in range(int(nstart),int(nend)+1):
               # Padding integer values with zeros
               # to be 5 letters long e.g. 1 -> 00001
-              icount = icount + 1
+              #icount = icount + 1
               fnum = '{0:0>5}'.format(num)
 
               # Loading data from files

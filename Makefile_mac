@@ -3,26 +3,33 @@ FUNWAVE_DIR = .
 WORK_DIR    = funwave-work
 COMPILER    = gnu
 PARALLEL    = true
-EXEC        = funwave_surface_wave_2D
+EXEC        = funwave_vertical_velocity_structure
 PRECISION   = double
 
 #-----------DEFINE FLAGS-----------------------------
 #         uncomment to choose the model
 #  FLAG_1  = -DCOUPLING
-FLAG_1 = -DDOUBLE_PRECISION
-#  FLAG_2  = -DZALPHA
-FLAG_2 = -DPARALLEL
-#  FLAG_3  = -DMANNING
-#  FLAG_4  = -DVESSEL
-FLAG_4 = -DCARTESIAN
+#FLAG_1 = -DDOUBLE_PRECISION
+#FLAG_4 = -DCARTESIAN
+#FLAG_2 = -DZALPHA
+#FLAG_2 = -DPARALLEL
+#FLAG_3  = -DMANNING
+#FLAG_4  = -DVESSEL
 #  FLAG_5  = -DMETEO
 #  FLAG_6  = -DWIND
-#  FLAG_7  = -DSEDIMENT
+#FLAG_7  = -DSEDIMENT
+#FLAG_7 = -DCOUPLING
 #  FLAG_8  = -DCHECK_MASS_CONSERVATION
 #  FLAG_9  = -DTMP
 #  FLAG_10 = -DTRACKING
 #  FLAG_11 = -DDEEP_DRAFT_VESSEL
-#  FLAG_12 = -DFOAM
+#FLAG_12 = -DFOAM
+#FLAG_12 = -DVESSEL
+#FLAG_13 = -DPRECIPITATION
+#FLAG_16 = -DMETEO
+#FLAG_16 = -DSEDIMENT
+#FLAG_18 = -DTRACKING
+FLAG_11 = -DAB_OUTPUT
 #----------------uncommon options---------------------
 DEF_FC      = mpif90
 DEF_FC_FLAG = 

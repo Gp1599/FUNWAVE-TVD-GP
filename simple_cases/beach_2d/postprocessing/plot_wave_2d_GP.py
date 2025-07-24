@@ -3,93 +3,86 @@
 # import necessary modules
 import numpy as np               
 import matplotlib.pyplot as plt
-
 import os
+
 # write your OWN PC folder path for fdir
 # Remember that we use for Mac & Linux machines '/', while on windows '\'
 #fdir = r'C:\Users\User\Documents\USACE_WORK\Funwave_Seminar\results\beach_2d\work\output'
-#fdir = "../../../../simulationRuns/beach2D/output/"
-fdir = "../../../../simulationRuns/beach2D_radiation/output/"
-# upload eta file
-eta=np.loadtxt(os.path.join(fdir,'eta_00001'))
+fdir = "../../../../simulationRuns/beach2D/output/"
 
-# define plot location
-n,m = np.shape(eta)
-print("Nglob:", n)
-print("Mglob:", m)
+# upload eta file
+eta = np.loadtxt(os.path.join(fdir,'eta_00001'))
+
+# Initialize discretization hyperparameters.
+n, m = np.shape(eta)
 dx = 2.0
 dy = 2.0
 
-x0_sponge = 100
+# Initialize x and y coordinates via initialize discretization.
+x = np.asarray([float(xa) * dx for xa in range(m)])
+y = np.asarray([float(ya) * dy for ya in range(n)])
 
-x = np.asarray([float(xa)*dx for xa in range(m)])
-y = np.asarray([float(ya)*dy for ya in range(n)])
+# define the sponge's coordinates 
+x_sponge =      [   0,         100,        100,            0,              0  ]
+y_sponge =      [   0,         0,          y[-1],          y[-1],          0  ]
 
-# define sponge and wavemaker location
-x_sponge =      [0,         100,        100,            0,              0  ]
-y_sponge =      [0,         0,          y[len(y)-1],    y[len(y)-1],    0  ]
+# define the wavemaker's coordinates
+x_wavemaker =   [   155,       155      ]
+y_wavemaker =   [   0,         y[-1]    ]
 
-x_wavemaker =   [155,       155,       ]
-y_wavemaker =   [0,         y[len(y)-1]]
-
-nfile = [10, 25]    # range of eta files you want to plot
-min = ['20','50']  # time you want to plot
+# Initializing the nfile and min parallel array parameters
+nfile =         [   10,        25      ]    # range of eta files you want to plot
+min =           [   '20',      '50'    ]    # time you want to plot
 
 # figure size option 
-wid=10    # width
-length=5 # length
+figure_w = 10   # width
+figure_l = 5    # length
 
 # plot figure
-fig = plt.figure(figsize=(wid,length),dpi=200)
+fig = plt.figure(figsize = (figure_w, figure_l), dpi = 200)
 
 #Gabriel's
 #The class to represent a plot to be used for this file
-class Beach2DPlotII:
-    
-    def __init__(self, fileNumber):
-        self.fileNumber = fileNumber
+def executeSubplot(num):
+    global fig
+    global nfile
+    global min 
+    global x, y
+    global x_sponge, y_sponge
+    global x_wavemaker, y_wavemaker
 
-    def putIn(self, fig, testFileQuantity, i):
-        global nfile
-        global min 
-        global x
-        global y
-        global x_sponge
-        global y_sponge
-        global x_wavemaker
-        global y_wavemaker
+    # Initializes the eta and mask matrices
+    fnum = '%.5d' % nfile[num]
+    eta = np.loadtxt(os.path.join(fdir, "eta_" + fnum))
+    mask = np.loadtxt(os.path.join(fdir, "mask_" + fnum))
 
-        fnum = '%.5d' % self.fileNumber
-        eta = np.loadtxt(os.path.join(fdir, "eta_" + fnum))
-        mask = np.loadtxt(os.path.join(fdir, "mask_" + fnum))
+    # Create the masked copy of the eta matrix 
+    eta_masked = np.ma.masked_where(mask == 0, eta)
 
-        eta_masked = np.ma.masked_where(mask == 0, eta)
-        print(np.shape(eta_masked))
+    # Add a new subplot
+    ax = fig.add_subplot(1, len(nfile), num + 1)
+    fig.subplots_adjust(hspace = 1, wspace = .25)
 
-        ax = fig.add_subplot(1, testFileQuantity, i + 1)
-        fig.subplots_adjust(hspace = 1, wspace = .25)
-        plt.pcolormesh(x, y, eta_masked, cmap = 'coolwarm') #plt.pcolor(x, y, eta_masked, cmap = 'coolwarm')
+    # Apply the jet colormap background to the subplot
+    plt.pcolormesh(x, y, eta_masked, cmap = 'coolwarm')
 
-        title = "Time = " + min[i] + " sec"
-        plt.title(title)
-        #plt.hold(True)
+    # Add the title to the subplot
+    title = "Time = " + min[num] + " sec"
+    plt.title(title)
 
-        # plot sponge and wavemaker
-        plt.plot(x_sponge, y_sponge, "g--", linewidth = 3, label = "Sponge") 
-        #plt.text(50, 500, "Sponge", color = 'g', rotation = 90)#FIXME: Change this to legend
+    # plot sponge and wavemaker + legend
+    plt.plot(x_sponge, y_sponge, "g--", linewidth = 3, label = "Sponge") 
+    plt.plot(x_wavemaker, y_wavemaker, 'k-', linewidth = 3, label = "Wavemaker")
+    plt.legend()
 
-        plt.plot(x_wavemaker, y_wavemaker, 'k-', linewidth = 3, label = "Wavemaker") #FIXME: Change this to line
-        #plt.text(180, 700, 'Wavemaker', color = 'k', rotation = 90)#FIXME: Change this to legend
-
-        plt.legend()
-
-        if i == 0:
-            plt.ylabel('Y (m)')
-            plt.xlabel('X (m)')
-        else:
-            plt.xlabel('X (m)')
-            cbar = plt.colorbar()
-            cbar.set_label(r'$\eta$' + ' (m)', rotation = 90)
+    #Setting the subplot's axes
+    if num == 0:
+        plt.ylabel('Y (m)')
+        plt.xlabel('X (m)')
+    else:
+        plt.xlabel('X (m)')
+        cbar = plt.colorbar()
+        cbar.set_label(r'$\eta$' + ' (m)', rotation = 90)
 
 #for num in range(len(nfile)):
 #    fnum= '%.5d' % nfile[num]
@@ -119,12 +112,11 @@ class Beach2DPlotII:
 #    else:
 #        plt.xlabel('X (m)')
 #        cbar=plt.colorbar()
-#        cbar.set_label(r'$\eta$'+' (m)', rotation=90)
-i = 0
-testFileQuantity = len(nfile)   
-for p in [Beach2DPlotII(num) for num in nfile]:
-    p.putIn(fig, testFileQuantity, i)
-    i += 1
+#        cbar.set_label(r'$\eta$'+' (m)', rotation=90)  
+
+# Execute every test file number
+for num in range(len(nfile)):
+    executeSubplot(num)
 
 # save figure  
-fig.savefig('eta_2d_wave.png', dpi=fig.dpi)
+fig.savefig('eta_2d_wave.png', dpi = fig.dpi)

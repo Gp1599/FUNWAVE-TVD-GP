@@ -7,8 +7,8 @@ import os
 # write your OWN PC folder path for fdir
 # Remember that we use for Mac & Linux machines '/', while on windows '\'
 #fdir = r'C:\Users\User\Documents\USACE_WORK\Funwave_Seminar\results\beach_2d\work\output'
-#fdir = "../../../../simulationRuns/beach2D/output/"
-fdir = "../../../../simulationRuns/beach2D_radiation/output/"
+fdir = "../../../../simulationRuns/beach2D/output/"
+
 # upload eta file
 eta=np.loadtxt(os.path.join(fdir,'eta_00001'))
 

@@ -1,0 +1,4 @@
+%5i %5i   - NumFreq NumDir 
+%10.3f    - PeakPeriod    
+%10.3f    - Freq 
+%10.3f    - Dire 

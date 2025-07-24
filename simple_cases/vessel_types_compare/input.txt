@@ -2,7 +2,7 @@
   ! NOTE: all input parameter are capital sensitive
   ! --------------------TITLE-------------------------------------
   ! title only for log file
-TITLE = VESSEL
+TITLE = vessel_types_compare
   ! -------------------HOT START---------------------------------
 HOT_START = F
 FileNumber_HOTSTART = 1
