@@ -14,7 +14,7 @@ fdir = "../../../../simulationRuns/beach2D/output/"
 
 multipleResults = True
 # Load the ETA matrix
-eta = np.loadtxt(os.path.join(fdir,'eta_00001'))
+eta = np.loadtxt(os.path.join(fdir, 'eta_00001'))
 
 # Initialize discretization hyperparamaters
 n, m = np.shape(eta)
@@ -33,7 +33,7 @@ x_wavemaker =   [   155,        155     ]
 y_wavemaker =   [    0,        y[-1]    ]
 
 # Initialize the test file and minimum time parallel array hyperparameters
-nfile =         range(1, 50) #[     1     ]       # range of eta files you want to plot
+nfile =         range(1, 2) #[     1     ]       # range of eta files you want to plot
 min =           [str(t * 200) for t in nfile] # [   '200'   ]       # time  you want to plot
 
 # figure size option 
@@ -103,7 +103,7 @@ def executeSubplot(num):
             cbar.set_label('Hsig (m)', rotation = 90)
     
     if multipleResults:
-        fig.savefig("results/curr_2D_wave_" + str(nfile[num]) + ".png", dpi = fig.dpi)
+        fig.savefig("results/curr_2d_wave_" + str(nfile[num]) + ".png", dpi = fig.dpi)
         fig.clf()
 
 # execute every test file number
