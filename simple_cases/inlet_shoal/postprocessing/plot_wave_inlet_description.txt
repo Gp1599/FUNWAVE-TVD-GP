@@ -1,0 +1,52 @@
+10.         Initializing path to simple case directory with output files
+12.         Loading depth matrix
+
+16.         Extracting Mglob and NGlob from the depth file
+
+17.         Initializing delta X to be used for discretization
+18.         Initializing delta Y to be used for discretization
+
+20.         Creating the array from Nglob via dx to be used as X coordinates
+21.         Creating the array from Mglob via dy to be used as Y coordinates
+
+24.         Creating the array of x coordinates for the sponge box
+25.         Creating the array of y coordinates for the sponge box
+
+27.         Creating the array of x coordinates for the wavemaker box
+28.         Creating the array of y coordinates for the wavemaker box
+
+31.         Configuring the hyperparameters for which test files to use
+32.         Giving the test files minimum times
+
+35.         Configuring the hyperparameter for the figure's width 
+36.         Configuring the hyperparameter for the figure's height
+
+for each test file
+43.         creating the multidigit version of the test file number
+44.         extracting the eta matrix from the eta file with the current file number
+45.         extracting the mask matrix from the mask test file to be used to mask the eta file
+
+47.         masking the eta matrix
+
+49.         initialzing the subplot
+50.         adding space among the subplot
+51.         adding the coolwarm background to the subplot
+52.         adding an axis named "tight"
+53.         initializing the subplot title to show the corresponding minimum time
+54.         applying the title to the subplot
+55.         holding the subplot (depreciated and to be commented out)
+
+58.         adding the sponge box to the subplot
+59.         adding the sponge box label to the subplot
+
+60.         adding the wavemaker box to the subplot
+61.         adding the wavemaker box label to the subplot
+
+64.         if the current test file is the first, then add the x-axis label to measure the subplot's width in meters
+65.         if the current test file is the first, then add the y-axis label to measure the subplot's length in meters 
+67.         if the current test file is not the first, then add the x-axis label to measure the subplot's width in meters
+68.         if the current test file is not the first, then add a colorbar to the subplot
+69.         if the current test file is not the first, then change the colorbar's label to ... and rotate it 90 degrees
+end of for
+
+72.         publishing the figure as inlet__shoal_wave.png

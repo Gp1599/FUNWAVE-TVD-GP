@@ -25,7 +25,7 @@ spc = np.loadtxt("SPC_HMO.txt")
 spc = np.transpose(spc)
 
 # Initialize the AMP and PHI rows
-Amp_each = np.transpose(np.sqrt(2) / 4.0 * spc)
+Amp_each = np.sqrt(2) / 4.0 * np.transpose(spc)
 Phi_each = np.zeros(len(Amp_each))
 
 # Initialize the Omega each 
@@ -115,20 +115,20 @@ PeakPeriod = 1. / peakf
 Freq = concatMatrices(freq_low, np.array([fre]))
 Dire = 0.0
 Amp1 = concatMatrices(anm_low, np.array([Amp_each]))
-Eng1 = concatMatrices(0.5 * anm_low * anm_low, np.array([0.5 * Amp_each * Amp_each]))
+Eng1 = concatMatrices(0.5 * np.pow(anm_low, 2), np.array([0.5 * np.pow(Amp_each, 2)]))
 Phase1 = concatMatrices(phase_low, np.array([Phi_each]))
 
 fid = open(fname, 'w')
-fid.write(str.format("%5i %5i   - NumFreq NumDir \n", NumFreq, NumDir))
-fid.write(str.format("%10.3f    - PeakPeriod    \n", PeakPeriod))
-fid.write(str.format("%10.3f    - Freq \n", Freq))
-fid.write(str.format("%10.3f    - Dire \n", Dire))
+fid.write("%5i" % NumFreq + " " + "%5i" % NumDir + "    - NumFreq NumDir \n")
+fid.write("%10.3f" % PeakPeriod + "    - PeakPeriod    \n")
+fid.write("%10.3f" % Freq[0, 0] + "    - Freq \n")
+fid.write("%10.3f" % Dire + "    - Dire \n")
 
 fid.close()
 
-time = np.arange(0, 500, 0.5)
-print(Omega_each)
-print(time)
+time = np.transpose(np.arange(0, 500, 0.5))
+#print(Omega_each)
+#print(time)
 Wave_each = Amp_each * np.cos(Omega_each * time + Phi_each)
 Wave_total = np.sum(Wave_each)
 IGW_each = anm_low * np.cos(OMEGA_nm_low * time + freq_low + phase_low)
@@ -154,7 +154,7 @@ plt.legend('wind wave','IG')
 fig.savefig("plots/windwave_and_IG_2comp.png") #print -djpeg100 plots/windwave_and_IG_2comp.jpg
 
 fig2 = plt.figure(2)
-plt.plot(time,WaveIG_total)
+plt.plot(time, WaveIG_total)
 plt.title('time series of elevation')
 plt.legend('wind wave + IG')
 plt.grid()

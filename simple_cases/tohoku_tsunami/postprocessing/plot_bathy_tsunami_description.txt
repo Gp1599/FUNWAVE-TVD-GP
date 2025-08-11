@@ -1,0 +1,25 @@
+4.          imports the numpy library for creating and processing arrays
+5.          imports the matplotlib.pyplot library for visualizing data for plot_bathy_tsunami
+
+10.         extracting the depth matrix from the depth file
+13.         extracting Nglob and Mglob from the depth matrix's dimensions
+14.         initializing deltaX for discretization
+15.         initializing deltaY for discretization
+
+17.         creating the array of x-coordinates that start with 137.01667
+18.         creating the array of y-coordinates that start with 59.98333
+
+21.         initializing the figure width hyperparameter
+22.         initializing the figure length hyperparameter
+
+25.         creating the figure and applying the initialized dimension hyperparameters to it\
+26.         creating the subplot 
+27.         giving space between subplots
+
+29.         adding the jet colormap to the subplot
+30.         making the subplot's axis tight
+31.         naming the subplot's y-axis to measure degrees of latitude
+32.         naming the subplot's x-axis to measure degrees of longitude
+
+35.         adding a colorbar to the subplot
+36.         saving the main figure as tsunami_bathy.png

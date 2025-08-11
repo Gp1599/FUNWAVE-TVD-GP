@@ -1,0 +1,37 @@
+10.         extracting depth matrix
+
+13.         extracting Nglob and Mglob from the depth matrix's shape
+14.         initializes delta x to be used for discretization
+15.         initializes delta y to be used for discretization
+
+17.         initializing the array to contain x coordinates
+18.         initializing the array to contain y coordinates
+
+21.         initializing the array to contain x coordinates of the sponge box
+22.         initializing the array to contain y coordinates of the sponge box
+
+24.         initializing the array to contain x coordinates of the wavemaker box
+25.         initializing the array to contain y coordinates of the wavemaker box
+
+29.         configuring the figure width hyperparameter
+30.         configuring the figure height hyperparameter
+
+33.         initializing the figure not only with the two previously mentioned hyperparameters to be used as its dimensions
+34.         initializing the figures subplot
+35.         giving space around the subplot
+
+37.         giving the subplot the terrain background based on the negated version of the depth matrix
+38.         giving the subplot's axis a name 'tight'
+39.         naming the y-axis to measure in meters
+40.         naming the x-axis to measure in meters
+41.         holding the subplot (depreciated and to be commented out)
+
+44.         adding the sponge box to the subplot
+45.         adding the label to the sponge box
+46.         adding the wavemaker box to the subplot
+47.         adding the label to the wavemaker box
+
+50.         adding the colorbar to the subplot
+51.         adding the label, to measure Bathymetry in (m), into the colorbar
+
+54.         publishing the figure as inlet__shoal_bathy.png

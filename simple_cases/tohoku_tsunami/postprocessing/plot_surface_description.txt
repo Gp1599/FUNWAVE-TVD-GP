@@ -1,0 +1,46 @@
+4.          imports the numpy library for ...
+5.          imports the matplotlib.pyplot library for visualizing data from the tohoku tsunami simulation
+6.          imports the matplotlib library
+
+11.         initializing the depth matrix from the depth file
+13.         initializing the path to the directory used to access output files
+
+16.         extracting Nglob and Mglob
+17.         initializing deltaX for discretization
+18.         initializing deltaY for discretization
+
+20.         creating an array of x-coordinates that start with 132.01667
+21.         creating an array of y-coordinates that start with -59.98333
+
+23.         initializing the hyperparameter list of test files
+24.         initializing the parallel hyperparameter array which contains they respective times
+
+27.         initializing the figure width hyperparameter
+28.         initializing the figure length hyperparameter
+
+31.         creating the figure and applying the initialized dimension hyperparameters to it.
+
+for every test file
+34.         initializing the 5-digit version of the current test file number to be used for reading an eta file
+35.         extracting the eta matrix from the eta file
+36.         creating the masked version of the eta matrix
+38.         creating the subplot
+39.         giving the subplot horizontal space
+40.         adding the jet colormap in the subplot
+
+42.         initializing the title to be named to indicate the file's corresponding time and given to the subplot.
+43.         applying the initialized title to the subplot
+44.         making the axes tight
+
+46.         naming the subplot's y-axis to measure degrees of latitude
+47.         naming the subplot's x-axis to measure degrees of longitude
+48.         creating the colorbar for the subplot
+49.         setting the colorbar's label to measure ..
+
+52.         sets the color limits from -0.5 to 0.5 if the test file is the first
+54.         sets the color limits from -0.05 to 0.05 otherwise
+
+56.         updates the font size to 10
+end of for
+
+58.         publishes the main figure as eta_tsunami.png

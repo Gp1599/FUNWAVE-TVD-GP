@@ -1,0 +1,61 @@
+6.      imports the os library for initializing paths to necessary files/directories
+7.      imports the numpy library for creating and processing arrays
+8.      imports the matplotlib library for visualizing rip_tracking data (not needed)
+9.      imports the matplotlib.pyplot library for visualizing rip_tracking data (not needed)
+10.     imports the matplotlib.cm library for applying the jet colormap to subplots
+11.     imports the ticker singleton from matplotlib to apply the MaxNLocator to the subplot's colorbar
+
+13.     initializes the path to the home directory
+14.     initializes the path to the directory with output files
+
+22.     initializes the path to the depth file
+23.     extracts the depth matrix from the depth file
+24.     extracts Nglob and Mglob from the depth matrix's shape
+
+27.     initializes deltaX for discretization
+28.     initializes deltaY for discretization
+
+31.     initializes the x coordinates
+32.     initializes the y coordinates
+
+35.     assembes the 2D map using the x and y arrays
+
+37.     prompts the user to enter the starting test file number, then the program will move on to the next consecutive one
+38.     prompts the user to enter the test file number to end at
+
+42.     initializes icount (not needed)
+
+for every consecutive test file
+47.     increments icount (not needed)
+48.     creates the 5-digit version of the current test file number
+
+51.     extracts the u matrix from the umean file
+52.     extracts the v matrix from the vmean file
+53.     extracts the eta matrix from the eta file
+54.     extracts the mask matrix from the mask file
+
+57.     removes masked regions from the eta matrix
+58.     removes masked regions from the depth matrix
+59.     removes masked regions from the u matrix
+60.     removes masked regions from the v matrix
+
+63.     initializes the file's respective subplot
+
+66.     applies the jet colormap background to the subplot
+67.     sets the fixed dimensions of the subplot's axes
+68.     adds the horizontal colorbar to the subplot
+69.     initializes the MaxNLocator for the colorbar
+70.     applies the initialized MaxNLocator to the colorbar
+71.     updates the colorbar's ticks
+
+73.     setting the colorbar's x-axis label to measure in a specified type of measurement unit
+74.     naming the subplot's x-axis to measure in meters
+75.     naming the subplot's y-axis to measure in meters
+
+78.     initializing the other suplot based on the test file
+
+80.     applies the countour to the subplot
+81.     adds the horizontal colorbar to the subplot
+82.     sets the colorbar's x-axis label indicate that it measures depth in meters
+
+end of for

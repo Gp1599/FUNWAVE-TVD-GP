@@ -1,0 +1,94 @@
+6.      imports the os library for initializing the paths to necessary files/directories
+7.      imports the numpy library for creating and processing arrays
+8.      imports the matplotlib library for visualizing sediment_rip data (line not needed)
+9.      imports the matplotlib.pyplot library for visualizing sediment_rip data
+10.     imports the jet colormap theme from matplotlib.cm to apply the jet colormap to subplots
+11.     imports the ticker from matplotlib to apply the MaxNLocator ticker to the subplot colorbars
+
+13.     initializing the path to the home directory
+14.     initializing the path to the output directory via the initialize path to the home directory
+
+22.     initializing the path to the depth file
+23.     extracting the depth matrix from the depth file
+24.     extracting Nglob and Mglob from the depth matrix's shape
+
+27.     initializing deltaX for discretization
+28.     initializing deltaY for discretization
+
+31.     creating the x-coordinate array
+32.     creating the y-coordinate array
+
+35.     assembles the 2D meshgrid from the initialized x and y arrays
+
+37.     prompting the user to enter the first test file number to start the iteration with
+38.     prompting the user to enter the last test file number to end with
+
+40.     initializing icount (to be removed)
+
+for every test file from starting to ending
+44.     increments icount (to be removed)
+45.     initializes the five-digit version of the current file number to be used for reading output files
+
+48.     extracts the u matirx from the umean file
+49.     extracts the v matrix from the vmean file
+50.     extracts the eta matrix from the eta file
+51.     extracts the mask matrix from the mask file
+52.     extracts the ch matrix from the C_ file
+53.     extracts the dep1 matrix from the depth file
+54.     initializes the depp matrix to be evaluate to (the dep1 matrix - the depth matrix) via matrix subtraction
+
+57.     masking the eta matrix via the mask matrix
+58.     masking the depth matrix via the mask matrix
+59.     masking the u matrix
+60.     masking the v matrix
+
+63.     creating the 1st suplot for the file
+64-65.  alters "the appearance of" how the first subplot shows grids
+
+68.     applies a jet colormap in the 1st subplot
+69.     sets the visibility range of both the 1st subplot's axes
+70.     adding the horizontal colorbar in the 1st subplot
+71.     sets the colorbar's tick label size to 6
+72.     
+73.     initializing the MaxNLocator ticker with nbin = 5
+74.     applying the initialized MaxNLocator ticker to the colorbar
+75.     updating the colorbar's ticks
+77.     setting the colorbar's x-axis label to indicate that it measures ... in meters
+78.     setting the first subplot's x-axis label to measure in meters
+79.     setting the first subplot's y-axis label to measure in meters
+
+82.     initializing the second subplot
+83.     ???
+84.     ???
+
+86.     applying the log10 backgorund to the second subplot
+88.     adds a horizontal colorbar to the second suplot
+89.     sets the colorbar's tick label size to 6
+90.     setting the image color limitations of the second subplot to vmin = -1 and vmax = 1
+91.     initializing the MaxNLocator with nbins = 5
+92.     applies the initialized MaxNLocator to the colorbar
+93.     updates the colorbar's ticks
+
+95.     setting the colorbar's x-axis label to measure log10(c) in (g/l)
+
+97.     initializing the everyWhich constant (to be turned into a global variable)
+98-101. adding quivers with characteristics based on the meshgrid, the u matrix, and the v matrix to the second subplot
+103.    sets the range for the second plot's axes
+104.    names the second subplot's x-axis to indicate that it measures in meters
+
+108.    initializing the third subplot
+109-110.alters "the appearance of" how the third subplot shows its grid layout.
+
+112.    applies the contour lines based on the grid mesh and depp matrix to the third subplot
+113.    applies the few contours based on the grid mesh and the depp matrix to the third subplot
+114.    sets range of the third subplot's axes
+115.    adds a horizontal colorbar to the third subplot
+116.    setting the colorbar's tick label size to 6
+117.    setting the third subplot's image settings to vmin = -0.05 and vmax = 0.05
+118.    initializing the MaxNLocator ticker with nbins = 5
+119.    applying the initialized MaxNLocator to the third subplot's colorbar
+120.    updating the third subplot's colorbar's ticks
+122.    setting the colorbar's x-axis label to measure in meters
+123.    naming the third subplot's x-axis to measure in meters
+125.    publishing the main plot as sediment_rip_num_<file index>.png
+126.    showing the plot

@@ -12,6 +12,7 @@ import os
 # Initialize path to the directory that has output files for beach_2d
 fdir = "../../../../simulationRuns/beach2D/output/"
 
+multipleResults = True
 # Load the ETA matrix
 eta = np.loadtxt(os.path.join(fdir,'eta_00001'))
 
@@ -32,8 +33,8 @@ x_wavemaker =   [   155,        155     ]
 y_wavemaker =   [    0,        y[-1]    ]
 
 # Initialize the test file and minimum time parallel array hyperparameters
-nfile =         [     1     ]       # range of eta files you want to plot
-min =           [   '200'   ]       # time  you want to plot
+nfile =         range(1, 50) #[     1     ]       # range of eta files you want to plot
+min =           [str(t * 200) for t in nfile] # [   '200'   ]       # time  you want to plot
 
 # figure size option 
 figure_w = 8    # width
@@ -65,7 +66,9 @@ def executeSubplot(num):
     ht_masked = np.ma.masked_where(mask == 0, ht)
 
     # Add a new subplot
-    ax = fig.add_subplot(1, len(nfile), num + 1)
+    ax = None
+    if(not multipleResults):
+        ax = fig.add_subplot(1, len(nfile), num + 1)
     fig.subplots_adjust(hspace = 1,wspace = .25)
 
     # Apply a jet colormap background, based on the masked ht matrix duplicate, to the subplot
@@ -85,20 +88,31 @@ def executeSubplot(num):
     plt.legend()
 
     # Sets the subplot's axes
-    if num == 0:
+    if multipleResults:
+        plt.xlabel('X (m)')
         plt.ylabel('Y (m)')
-        plt.xlabel('X (m)')
-    else:
-        plt.xlabel('X (m)')
         cbar = plt.colorbar()
         cbar.set_label('Hsig (m)', rotation = 90)
+    else:
+        if num == 0:
+            plt.ylabel('Y (m)')
+            plt.xlabel('X (m)')
+        else:
+            plt.xlabel('X (m)')
+            cbar = plt.colorbar()
+            cbar.set_label('Hsig (m)', rotation = 90)
+    
+    if multipleResults:
+        fig.savefig("results/curr_2D_wave_" + str(nfile[num]) + ".png", dpi = fig.dpi)
+        fig.clf()
 
 # execute every test file number
 for num in range(len(nfile)):   
     executeSubplot(num)
 
-# save figure        
-fig.savefig('curr_2d_wave.png', dpi = fig.dpi)
+# save figure  
+if not multipleResults:      
+    fig.savefig('curr_2d_wave.png', dpi = fig.dpi)
 
 #for num in range(len(nfile)):
     #fnum= '%.5d' % nfile[num]

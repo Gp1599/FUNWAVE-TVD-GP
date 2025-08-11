@@ -1,0 +1,53 @@
+1.          imports the matplotlib.pyplot library for visualizing levee_1D's data
+2.          imports the numpy library for creating and process arrays
+3.          imports the os library for initializing paths to necessary files more efficiently
+
+6 or 7.     initializes the path of the simple case directory where its corresponding output files are
+8.          initializes the output directory path with the simple case directory path
+9.          initializes the directory path, where the case's corresponding plots are, with the simple case directory path
+
+12-13.      creates the directory to the levee_1D's postprocessed plots if not created already
+
+16.         creates the depth array from the depth file
+17.         extracts Mglob and Nglob from the depth file
+
+20.         initializes the number of ETA files to test to be used as a hyperparameter
+21.         initializes the Lt constant
+22.         initializes the WaveMaker constant
+23.         initializes the plotInt constant 
+
+to read ETA data
+29.         checks if the number parameter is between 1 and the number of ETA files to test; if not valid, the function will raise an exception to the program
+
+32.         initializes the file index as a copy of "num"
+33.         creates the filename based on the num
+34.         lets the user know that the script is reading the current ETA file
+35-36.      extracts from the eta file the free_surface array.
+37.         returns the extracted free_surface array.
+end of function
+
+for every ETA Plot
+41.         extracts the plot's ETA data to be used as y coordinates
+42.         initializes the plot's x coordinates
+
+44.         initializes the plot's figure
+45.         initializes the subplot
+46.         visualizes the coordinates
+47.         visualizes the axis
+
+49.         visualizes the x label
+50.         visualizes the y label
+
+54-56.      visualizes the water
+
+59-61.      visualizes the bottom fill
+
+64-65.      visualizes the annotation where the wave starts
+
+66-67.      visualizes the annotation for elapsed time
+
+69.         initializes fileNumber
+70.         initializes the filename for the plot
+71.         publishes the plot as surf<5-digit version of the file index>.png
+72.         closing the plot
+end of for

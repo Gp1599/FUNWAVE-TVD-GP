@@ -9,6 +9,7 @@ import os
 # Remember that we use for Mac & Linux machines '/', while on windows '\'
 #fdir = r'C:\Users\User\Documents\USACE_WORK\Funwave_Seminar\results\beach_2d\work\output'
 fdir = "../../../../simulationRuns/beach2D/output/"
+multipleResults = True
 
 # upload eta file
 eta = np.loadtxt(os.path.join(fdir,'eta_00001'))
@@ -31,8 +32,8 @@ x_wavemaker =   [   155,       155      ]
 y_wavemaker =   [   0,         y[-1]    ]
 
 # Initializing the nfile and min parallel array parameters
-nfile =         [   10,        25      ]    # range of eta files you want to plot
-min =           [   '20',      '50'    ]    # time you want to plot
+nfile =         range(0, 50) #[   10,        25      ]    # range of eta files you want to plot
+min =           [str(5 * t) for t in nfile] #[   '20',      '50'    ]    # time you want to plot
 
 # figure size option 
 figure_w = 10   # width
@@ -60,7 +61,9 @@ def executeSubplot(num):
     eta_masked = np.ma.masked_where(mask == 0, eta)
 
     # Add a new subplot
-    ax = fig.add_subplot(1, len(nfile), num + 1)
+    ax = None
+    if not multipleResults:
+        ax = fig.add_subplot(1, len(nfile), num + 1)
     fig.subplots_adjust(hspace = 1, wspace = .25)
 
     # Apply the jet colormap background to the subplot
@@ -76,13 +79,23 @@ def executeSubplot(num):
     plt.legend()
 
     #Setting the subplot's axes
-    if num == 0:
+    if multipleResults:
         plt.ylabel('Y (m)')
-        plt.xlabel('X (m)')
-    else:
         plt.xlabel('X (m)')
         cbar = plt.colorbar()
         cbar.set_label(r'$\eta$' + ' (m)', rotation = 90)
+    else:
+        if num == 0:
+            plt.ylabel('Y (m)')
+            plt.xlabel('X (m)')
+        else:
+            plt.xlabel('X (m)')
+            cbar = plt.colorbar()
+            cbar.set_label(r'$\eta$' + ' (m)', rotation = 90)
+    
+    if multipleResults:
+        fig.savefig("results/eta_2d_wave_" + str(nfile[num]) + ".png")
+        fig.clf()
 
 #for num in range(len(nfile)):
 #    fnum= '%.5d' % nfile[num]
@@ -119,4 +132,5 @@ for num in range(len(nfile)):
     executeSubplot(num)
 
 # save figure  
-fig.savefig('eta_2d_wave.png', dpi = fig.dpi)
+if not multipleResults:
+    fig.savefig('eta_2d_wave.png', dpi = fig.dpi)

@@ -3,7 +3,7 @@ FUNWAVE_DIR = .
 WORK_DIR    = funwave-work
 COMPILER    = gnu
 PARALLEL    = true
-EXEC        = funwave_vertical_velocity_structure
+EXEC        = funwave_tide_frf_abc_data
 PRECISION   = double
 
 #-----------DEFINE FLAGS-----------------------------
@@ -29,7 +29,7 @@ PRECISION   = double
 #FLAG_16 = -DMETEO
 #FLAG_16 = -DSEDIMENT
 #FLAG_18 = -DTRACKING
-FLAG_11 = -DAB_OUTPUT
+#FLAG_11 = -DAB_OUTPUT
 #----------------uncommon options---------------------
 DEF_FC      = mpif90
 DEF_FC_FLAG = 

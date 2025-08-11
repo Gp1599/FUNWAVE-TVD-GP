@@ -1,0 +1,70 @@
+4.                  imports the numpy library for creating and processing arrays
+5.                  imports the matplotlib library for visualizing beach 2D data
+7.                  imports the os library for initializing paths to necessary files/directories
+
+11, 12, or 13.      Initializes the directory where the output files for this particular simple case are
+
+15.                 extracts the eta matrix from the first eta file
+
+17.                 creates m and n from the shape of the eta file (n -> Nglob from the input file & m -> Mglob from the input file)
+18.                 initializes dx for plot location and probably discretization
+19.                 initializes dy for plot location and probably discretization
+
+22.                 creates x as a 1D array from m via plot location and discretization
+23.                 creates y as a 1D array from n via plot location and discretization
+
+25.                 creates spongeX (related to the Sponge Layer input variables) to be used as x coordinates for the sponge box
+26.                 creates spongeY (related to the Sponge Layer input variables) to be used as y coordinates for the sponge box
+
+28.                 creates wavemakerX (related to the Wavemaker Layer input variables) to be used as x coordinates for the wavemaker box
+29.                 creates wavemakerY (related to the Wavemaker Layer input variables) to be used as y coordinates for the wavemaker box
+
+31.                 indicates which eta output files to test
+32.                 for each file, it indicates the minimum time you want the plot to take
+
+35.                 indicates the figure width hyperparameter
+36.                 indicates the figure length hyperparameter
+
+40.                 initializes the figure with these hyperparameters
+
+for every subplot
+43.                 initializes the 5-digit version of the current file number
+44.                 initializes u as a matrix from the umean file
+45.                 initializes v as a matrix from the vmean file
+46.                 initializes ht as a matrix from the Hsig file
+47.                 initializes mask as a matrix from the mask file
+    masking
+50.                 duplicate and mask u by hiding zeros in them via the mask matrix
+51.                 duplicate and mask v by hiding zeros in them via the mask matrix
+52.                 duplicate and mask ht by hiding zeros in them via the mask matrix
+    subplot initialization
+54.                 creates and adds a new suplot
+55.                 separates subplots with hspace = 1.00 wspace = 0.25
+56.                 gives the suplot the coolwarm background based on the ht_masked matrix
+
+    Adds the title to the subplot
+58.                 initializes the subplot title which is "Time = <time> sec" where <time> is the subplot's corresponding minimum time in seconds
+59.                 applies the title to the subplot
+60.                 holds the subplot (depreciated and commented out)
+
+62.                 initialized the sk constant (to be moved as a global variable)
+
+
+    quivers
+65.                 sets up the quivers
+66-67.              plots the quiver key which indicates the speed based on a quiver's magnitude
+    sponge area
+72.                 plots the rectangular area of the sponge
+73.                 gives the sponge's area the name "Sponge" and give it the color green
+    wavemaker area
+75.                 plots the rectangular area of the Wavemaker
+76.                 gives the Wavemaker's area the name "Wakemaker" and give it the color "k"
+    axes
+79.                 initializes the Y axis in meters if the current subplot is the first
+80.                 initializes the X axis in meters if the current subplot is the first
+82.                 initializes the X axis in meters if the current subplot is not the first
+83.                 initializes the sublot's colorbar if the current subplot is not the first
+84.                 changes the sublot's colorbar's label to "Hsig (m)" and rotates it 90 degrees if the current subplot is not the first
+end of for
+
+87.                publishes the main figure as curr_2d_wave.png
