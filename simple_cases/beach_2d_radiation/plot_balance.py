@@ -39,7 +39,7 @@ plt.plot(DySxy[ny - 1, :], 'b--')
 plt.plot(FRCX[ny - 1, :], 'k-')
 plt.plot(DxUUH[ny - 1, :], 'c')
 plt.plot(DyUVH[ny - 1, :], 'c--')
-plt.legend(['PgrdX', 'DxSxx', 'DySxy', 'FRCX', 'DxUUH', 'DyUVH', 'Location', 'NorthWest'])
+plt.legend(['PgrdX', 'DxSxx', 'DySxy', 'FRCX', 'DxUUH', 'DyUVH'], loc = 'upper left')
 plt.grid()
 #plt.xlabel('grid point')
 plt.ylabel(r'$m^2/s^2$')
@@ -53,10 +53,10 @@ plt.plot(DxSxy[ny, :], 'b-')
 plt.plot(FRCY[ny, :], 'k-')
 plt.plot(DyVVH[ny, :], 'c--')
 plt.plot(DxUVH[ny, :],'c-')
-plt.legend(['PgrdY', 'DySyy', 'DxSxy', 'FRCY', 'DyVVH', 'DxUVH', 'Location', 'NorthWest'])
+plt.legend(['PgrdY', 'DySyy', 'DxSxy', 'FRCY', 'DyVVH', 'DxUVH'], loc = 'upper left')
 plt.grid()
 plt.xlabel('grid point')
 plt.ylabel(r'$m^2/s^2$')
 
 # Saving the main figure for the test file number as a png image
-plt.savefig("balance3.png") #"#print -djpeg100 balance.jpg
+plt.savefig("balance.png") #"#print -djpeg100 balance.jpg

@@ -136,7 +136,7 @@ plt.subplot(132)
 # Apply the color
 plt.pcolormesh(x, y, BrkDX, cmap = 'jet') #,shading flat
 plt.axis([300, 500, 0, 90])
-plt.xlabel('x(m)')
+plt.xlabel('x (m)')
 #plt.ylabel('y(m)')
 
 # Give the subplot the colorbar 
@@ -148,7 +148,7 @@ plt.title('avg brk stress')
 plt.subplot(133)
 plt.pcolormesh(x, y, FRCX, cmap = 'jet') #,shading flat
 plt.axis([300, 500, 0, 90])
-plt.xlabel('x(m)')
+plt.xlabel('x (m)')
 #plt.ylabel('y(m)')
 cbar = plt.colorbar()
 cbar.ax.set_ylabel(r'$-C_d uU (m^2/s^2)$') #set(get(cbar,'ylabel'),'String','-C_d uU (m^2/s^2)')
