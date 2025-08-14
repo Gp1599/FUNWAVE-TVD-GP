@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 #clear all
 
 #
-hs = np.loadtxt('input_data_case1.txt')
+hs = np.loadtxt('input_data_case1.txt').astype(type(float))
 depth = 13.0
 peak_freq = 0.158
 
